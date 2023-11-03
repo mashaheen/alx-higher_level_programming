@@ -6,5 +6,3 @@ if __name__ == "__main__":
     for i in name:
         if i[:2] != '__':
             print("{:s}".format(i))
-
-
