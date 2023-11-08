@@ -5,7 +5,7 @@ def best_score(a_dictionary):
     score = 0
     lead = ''
     for x, y in a_dictionary.items():
-        if y > score:
+        if y >= score:
             score = y
             lead = x
     return lead
