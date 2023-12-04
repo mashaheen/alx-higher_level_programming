@@ -1,105 +1,24 @@
-# 1-my_list.txt
-=======================
-Usage of 1-my_list.py
-=======================
+===============================
+1. Print sorted module
+===============================
 
-Module defines ``MyList`` that inherits from ``list``.
-
-__init__
-=============
-
-``MyList`` can be instantiated with zero arguments, return
-empty list:
-
-::
-
+Import module:
+==============
     >>> MyList = __import__('1-my_list').MyList
-    >>> my_list = MyList()
-    >>> type(my_list)
-    <class '1-my_list.MyList'>
-
-::
-
-    >>> print(my_list)
-    []
-
-Or a single argument, iterable object.
-
-::
-
-    >>> my_list = MyList([1, 2, 3])
-    >>> print(my_list)
-    [1, 2, 3]
-
-::
-
-    >>> my_list = MyList(None)
-    Traceback (most recent call last):
-    TypeError: 'NoneType' object is not iterable
 
 
-A ``TypeError`` will be raised for any more than one instantiation arguments.
+Function:
+=========
+Write a class MyList that inherits from list:
 
-::
+    * You can assume that all the elements of the list will be of type int
 
-    >>> my_list = MyList([1, 2], [3, 4])
-    Traceback (most recent call last):
-    TypeError: list() takes at most 1 argument (2 given)
+Section // No exceptions
+=========================
 
-Usage
-=====
-
-``MyList`` class inherited from ``list`` class, they have the same methods.
-Elements can be added to a ``MyList`` with the ``append()`` method.
-
-::
+Test case #0: A test case to order a disordered list of positive integers
 
     >>> my_list = MyList()
-    >>> my_list.append(1)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> print(my_list)
-    [1, 2, 3]
-
-Replaced with indexing:
-
-::
-
-    >>> my_list[0] = 5
-    >>> print(my_list)
-    [5, 2, 3]
-
-And removed with the ``remove()`` method.
-
-::
-
-    >>> my_list.remove(5)
-    >>> print(my_list)
-    [2, 3]
-
-
-``print_sorted`` Method
-=======================
-
-``MyList`` implements a single method - a public instance method
-``print_sorted(self)``.
-
-::
-
-    >>> my_list = MyList()
-    >>> print(my_list.print_sorted)
-    <bound method MyList.print_sorted of []>
-
-
-::
-
-    >>> my_list.print_sorted(1)
-    Traceback (most recent call last):
-    TypeError: print_sorted() takes 1 positional argument but 2 were given
-
-
-::
-
     >>> my_list.append(1)
     >>> my_list.append(4)
     >>> my_list.append(2)
@@ -108,53 +27,88 @@ And removed with the ``remove()`` method.
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-::
-
     >>> my_list.print_sorted()
     [1, 2, 3, 4, 5]
-
-
-::
 
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-
-::
+Test case #1: A test case to order positive integers
 
     >>> my_list = MyList()
-    >>> my_list.append("B")
-    >>> my_list.append("A")
-    >>> my_list.append("E")
-    >>> my_list.append("D")
-    >>> my_list.append("C")
+    >>> my_list.append(5)
+    >>> my_list.append(4)
+    >>> my_list.append(3)
+    >>> my_list.append(2)
+    >>> my_list.append(1)
     >>> print(my_list)
-    ['B', 'A', 'E', 'D', 'C']
-
-::
+    [5, 4, 3, 2, 1]
 
     >>> my_list.print_sorted()
-    ['A', 'B', 'C', 'D', 'E']
-
-
-::
+    [1, 2, 3, 4, 5]
 
     >>> print(my_list)
-    ['B', 'A', 'E', 'D', 'C']
+    [5, 4, 3, 2, 1]
 
-
-::
+Test case #2: A test case for an empty list
 
     >>> my_list = MyList()
+    >>> print(my_list)
+    []
+
     >>> my_list.print_sorted()
     []
 
-If ``print_sorted(...)`` is called on a list of different types, a TypeError
-will be raised.
+    >>> print(my_list)
+    []
 
-::
+Test case #3: A test case for do nothing
 
-    >>> my_list = MyList([1, "A", "B", 3])
+    >>> my_list = MyList()
+    >>> my_list.append(-5)
+    >>> my_list.append(-4)
+    >>> my_list.append(-3)
+    >>> my_list.append(-2)
+    >>> my_list.append(-1)
+    >>> print(my_list)
+    [-5, -4, -3, -2, -1]
+
+    >>> my_list.print_sorted()
+    [-5, -4, -3, -2, -1]
+
+    >>> print(my_list)
+    [-5, -4, -3, -2, -1]
+
+Test case #4: A test case to order negative integers
+
+    >>> my_list = MyList()
+    >>> my_list.append(-1)
+    >>> my_list.append(-4)
+    >>> my_list.append(-2)
+    >>> my_list.append(-3)
+    >>> my_list.append(-5)
+    >>> print(my_list)
+    [-1, -4, -2, -3, -5]
+
+    >>> my_list.print_sorted()
+    [-5, -4, -3, -2, -1]
+
+    >>> print(my_list)
+    [-1, -4, -2, -3, -5]
+
+
+Errors
+============================
+
+Test case #5: A invalid test case of tuples
+
+    >>> my_list = (1, 2)
+    >>> print(my_list)
+    (1, 2)
+    
     >>> my_list.print_sorted()
     Traceback (most recent call last):
-    TypeError: unorderable types: str() < int()
+    AttributeError: 'tuple' object has no attribute 'print_sorted'
+
+    >>> print(my_list)
+    (1, 2)
