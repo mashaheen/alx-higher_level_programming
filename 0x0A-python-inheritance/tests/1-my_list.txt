@@ -1,0 +1,160 @@
+# 1-my_list.txt
+=======================
+Usage of 1-my_list.py
+=======================
+
+Module defines ``MyList`` that inherits from ``list``.
+
+__init__
+=============
+
+``MyList`` can be instantiated with zero arguments, return
+empty list:
+
+::
+
+    >>> MyList = __import__('1-my_list').MyList
+    >>> my_list = MyList()
+    >>> type(my_list)
+    <class '1-my_list.MyList'>
+
+::
+
+    >>> print(my_list)
+    []
+
+Or a single argument, iterable object.
+
+::
+
+    >>> my_list = MyList([1, 2, 3])
+    >>> print(my_list)
+    [1, 2, 3]
+
+::
+
+    >>> my_list = MyList(None)
+    Traceback (most recent call last):
+    TypeError: 'NoneType' object is not iterable
+
+
+A ``TypeError`` will be raised for any more than one instantiation arguments.
+
+::
+
+    >>> my_list = MyList([1, 2], [3, 4])
+    Traceback (most recent call last):
+    TypeError: list() takes at most 1 argument (2 given)
+
+Usage
+=====
+
+``MyList`` class inherited from ``list`` class, they have the same methods.
+Elements can be added to a ``MyList`` with the ``append()`` method.
+
+::
+
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> print(my_list)
+    [1, 2, 3]
+
+Replaced with indexing:
+
+::
+
+    >>> my_list[0] = 5
+    >>> print(my_list)
+    [5, 2, 3]
+
+And removed with the ``remove()`` method.
+
+::
+
+    >>> my_list.remove(5)
+    >>> print(my_list)
+    [2, 3]
+
+
+``print_sorted`` Method
+=======================
+
+``MyList`` implements a single method - a public instance method
+``print_sorted(self)``.
+
+::
+
+    >>> my_list = MyList()
+    >>> print(my_list.print_sorted)
+    <bound method MyList.print_sorted of []>
+
+
+::
+
+    >>> my_list.print_sorted(1)
+    Traceback (most recent call last):
+    TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+
+::
+
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+::
+
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+
+::
+
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+
+::
+
+    >>> my_list = MyList()
+    >>> my_list.append("B")
+    >>> my_list.append("A")
+    >>> my_list.append("E")
+    >>> my_list.append("D")
+    >>> my_list.append("C")
+    >>> print(my_list)
+    ['B', 'A', 'E', 'D', 'C']
+
+::
+
+    >>> my_list.print_sorted()
+    ['A', 'B', 'C', 'D', 'E']
+
+
+::
+
+    >>> print(my_list)
+    ['B', 'A', 'E', 'D', 'C']
+
+
+::
+
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+If ``print_sorted(...)`` is called on a list of different types, a TypeError
+will be raised.
+
+::
+
+    >>> my_list = MyList([1, "A", "B", 3])
+    >>> my_list.print_sorted()
+    Traceback (most recent call last):
+    TypeError: unorderable types: str() < int()
